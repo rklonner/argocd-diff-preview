@@ -8,7 +8,7 @@ spec:
   goTemplateOptions: ["missingkey=error"]
   generators:
     - git:
-        repoURL: https://github.com/dag-andersen/argocd-diff-preview
+        repoURL: https://github.com/rklonner/argocd-diff-preview
         revision: HEAD
         directories:
         - path: 'examples/kustomize/my-service/overlay/*'
@@ -21,7 +21,7 @@ spec:
         name: in-cluster
         namespace: 'my-service-app-set-{{.path.basename}}'
       source:
-        repoURL: https://github.com/dag-andersen/argocd-diff-preview
+        repoURL: https://github.com/rklonner/argocd-diff-preview
         targetRevision: HEAD
         path: 'examples/kustomize/my-service/overlay/{{.path.basename}}/'
       syncPolicy:
