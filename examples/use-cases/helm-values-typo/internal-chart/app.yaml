@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: internal-chart-example
+  name: helm-values-typo-example
   namespace: argocd
 spec:
   project: default
@@ -9,10 +9,10 @@ spec:
     name: in-cluster
     namespace: default
   sources:
-    - repoURL: https://github.com/dag-andersen/argocd-diff-preview
+    - repoURL: https://github.com/rklonner/argocd-diff-preview
       ref: local-files
-    - path: examples/helm/charts/myApp
-      repoURL: https://github.com/dag-andersen/argocd-diff-preview
+    - path: examples/use-cases/helm-values-typo/my-app/my-app
+      repoURL: https://github.com/rklonner/argocd-diff-preview
       helm:
         valueFiles:
-          - $local-files/examples/helm/values/my-app.yaml
+          - $local-files/examples/use-cases/helm-values-typo/values/prd.yaml
