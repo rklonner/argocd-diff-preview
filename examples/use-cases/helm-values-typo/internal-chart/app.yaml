@@ -15,4 +15,4 @@ spec:
       repoURL: https://github.com/rklonner/argocd-diff-preview
       helm:
         valueFiles:
-          - $local-files/examples/use-cases/helm-values-typo/values/prd.yaml
+          - $local-files/examples/use-cases/helm-values-typo/my-app/values/prd.yaml
