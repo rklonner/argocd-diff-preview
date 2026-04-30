@@ -8,4 +8,4 @@ resources:
 service:
   type: NodePort
   port: 32300
-
+replicas: 4
