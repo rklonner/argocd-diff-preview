@@ -5,8 +5,8 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
+  replicaCount: 4
 service:
   type: NodePort
   port: 32300
-replicas: 4
 
