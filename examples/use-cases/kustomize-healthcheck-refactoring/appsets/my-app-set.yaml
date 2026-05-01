@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: kustomize-healthcheck-refactoring
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - list:
+      elements:
+      - env: production
+      - env: staging
+  template:
+    metadata:
+      name: 'kustomize-healthcheck-refactoring-{{.env}}'
+    spec:
+      project: default
+      destination:
+        name: in-cluster
+        namespace: 'kustomize-healthcheck-refactoring-{{.env}}'
+      source:
+        repoURL: https://github.com/rklonner/argocd-diff-preview
+        targetRevision: HEAD
+        path: 'examples/use-cases/kustomize-healthcheck-refactoring/my-service/overlay/{{.env}}/'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
