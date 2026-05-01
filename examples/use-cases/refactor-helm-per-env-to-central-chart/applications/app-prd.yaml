@@ -8,7 +8,6 @@ spec:
   destination:
     name: in-cluster
     namespace: default
-  source:
   sources:
     - repoURL: https://github.com/rklonner/argocd-diff-preview
       ref: local-files
