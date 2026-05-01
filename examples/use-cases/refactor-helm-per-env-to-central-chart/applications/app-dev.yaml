@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp-dev
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    name: in-cluster
+    namespace: default
+  source:
+    path: examples/use-cases/refactor-helm-per-env-to-central-chart/my-app/my-app/dev/
+    repoURL: https://github.com/rklonner/argocd-diff-preview
