@@ -9,5 +9,11 @@ spec:
     name: in-cluster
     namespace: default
   source:
-    path: examples/use-cases/refactor-helm-per-env-to-central-chart/my-app/my-app/prd/
-    repoURL: https://github.com/rklonner/argocd-diff-preview
+  sources:
+    - repoURL: https://github.com/rklonner/argocd-diff-preview
+      ref: local-files
+    - path: examples/use-cases/refactor-helm-per-env-to-central-chart/my-app/my-app
+      repoURL: https://github.com/rklonner/argocd-diff-preview
+      helm:
+        valueFiles:
+          - $local-files/examples/use-cases/refactor-helm-per-env-to-central-chart/my-app/values/prd.yaml
