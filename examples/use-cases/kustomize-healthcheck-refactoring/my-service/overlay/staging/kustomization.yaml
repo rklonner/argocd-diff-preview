@@ -4,5 +4,4 @@ namePrefix: staging-
 resources:
   - ../../base
 patches:
-  - path: healthcheck.yaml
   - path: memory_limit.yaml

@@ -11,3 +11,8 @@ spec:
           image: dag-andersen/myapp:latest
           ports:
             - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            initialDelaySeconds: 3

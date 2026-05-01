@@ -4,6 +4,5 @@ namePrefix: prod-
 resources:
   - ../../base
 patches:
-  - path: healthcheck.yaml
   - path: replica_count.yaml
   - path: memory_limit.yaml
