@@ -11,7 +11,7 @@ spec:
   sources:
     - repoURL: https://github.com/rklonner/argocd-diff-preview
       ref: local-files
-    - path: examples/use-cases/helm-values-typo/my-app/my-app
+    - path: examples/use-cases/refactor-helm-per-env-to-central-chart/my-app/my-app
       repoURL: https://github.com/rklonner/argocd-diff-preview
       helm:
         valueFiles:
