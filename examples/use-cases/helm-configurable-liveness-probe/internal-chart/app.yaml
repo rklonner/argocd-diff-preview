@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm-values-typo-example
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    name: in-cluster
+    namespace: default
+  sources:
+    - repoURL: https://github.com/rklonner/argocd-diff-preview
+      ref: local-files
+    - path: examples/use-cases/helm-configurable-liveness-probe/my-app/my-app
+      repoURL: https://github.com/rklonner/argocd-diff-preview
+      helm:
+        valueFiles:
+          - $local-files/examples/use-cases/helm-configurable-liveness-probe/my-app/values/prd.yaml
