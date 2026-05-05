@@ -45,7 +45,6 @@ spec:
             httpGet:
               path: {{ .Values.livenessProbe.path }}
               port: http
-            # Nested Loop: Reviewers must track the '.' context shift
             {{- if .Values.livenessProbe.customHeaders }}
             httpHeaders:
               {{- range .Values.livenessProbe.customHeaders }}
