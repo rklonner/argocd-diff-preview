@@ -40,10 +40,20 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+          {{- if .Values.livenessProbe.enabled }}
           livenessProbe:
             httpGet:
-              path: /healthz
-              port: 80
+              path: {{ .Values.livenessProbe.path }}
+              port: http
+            # Nested Loop: Reviewers must track the '.' context shift
+            {{- if .Values.livenessProbe.customHeaders }}
+            httpHeaders:
+              {{- range .Values.livenessProbe.customHeaders }}
+              - name: {{ .name }}
+                value: {{ .value | quote }}
+              {{- end }}
+            {{- end }}
+          {{- end }}
           readinessProbe:
             {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:

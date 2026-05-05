@@ -8,4 +8,6 @@ resources:
 service:
   type: NodePort
   port: 32300
-
+livenessProbe:
+  enabled: true
+  path: /healthz
